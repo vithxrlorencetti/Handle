@@ -24,7 +24,7 @@ public class FornecedorDAO {
     public void criaTabelaFornecedor() {
 
         String sql = "CREATE TABLE IF NOT EXISTS fornecedores (" +
-                "idFornecedor INT PRIMARY KEY AUTO_INCREMENT," +
+                "idFornecedor BIGSERIAL PRIMARY KEY," +
                 "nomeFornecedor VARCHAR(50) NOT NULL ," +
                 "telefoneFornecedor VARCHAR(50) NOT NULL" +
                 ");";

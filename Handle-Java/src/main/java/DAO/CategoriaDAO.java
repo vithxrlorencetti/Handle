@@ -12,12 +12,16 @@ public class CategoriaDAO {
     private Connection connection;
 
     public CategoriaDAO() {
-        this.connection = new ConnectionFactory().getConnection();
+        try {
+            this.connection = new ConnectionFactory().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void criarTabelaCategorias() {
         String sql = "CREATE TABLE IF NOT EXISTS categorias (" +
-                "idCategoria INT PRIMARY KEY AUTO_INCREMENT," +
+                "idCategoria BIGSERIAL PRIMARY KEY," +
                 "nomeCategoria VARCHAR(50)" +
                 ");";
         try {

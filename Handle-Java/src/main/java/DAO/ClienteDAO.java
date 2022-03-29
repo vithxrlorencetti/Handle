@@ -16,12 +16,16 @@ public class ClienteDAO {
     Connection connection;
 
     public ClienteDAO(){
-        connection = new ConnectionFactory().getConnection();
+        try {
+            connection = new ConnectionFactory().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void criarTabelaClientes(){
         String sql = "CREATE TABLE IF NOT EXISTS clientes(" +
-                "idCliente INT PRIMARY KEY AUTO_INCREMENT," +
+                "idCliente BIGSERIAL PRIMARY KEY," +
                 "nomeCliente VARCHAR(50)NOT NULL," +
                 "telefoneCliente VARCHAR(50)NOT NULL)";
         try{

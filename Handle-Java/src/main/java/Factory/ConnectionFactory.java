@@ -6,14 +6,15 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    public Connection getConnection(){
+    public Connection getConnection() throws SQLException {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/handle-pdv", "root", "31052003");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            Class.forName("org.postgresql.Driver");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/handle","postgres","root");
+        }
+        catch (ClassNotFoundException e) {
+            throw new SQLException(e.getMessage());
         }
     }
-
 }
 
 

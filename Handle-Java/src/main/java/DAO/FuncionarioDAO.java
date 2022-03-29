@@ -18,7 +18,7 @@ public class FuncionarioDAO {
 
     public void criarTabelaFuncionario(){
         String sql = "CREATE TABLE IF NOT EXISTS funcionarios(" +
-                "idFuncionario INT PRIMARY KEY AUTO_INCREMENT," +
+                "idFuncionario BIGSERIAL PRIMARY KEY," +
                 "nomeFuncionario VARCHAR(50) NOT NULL," +
                 "numIdentidadeFuncionario VARCHAR(50) NOT NULL," +
                 "telefoneFuncionario VARCHAR(50) NOT NULL," +

@@ -16,17 +16,17 @@ public class ProdutoDAO {
 
     public void criarTabelaProdutos() {
         String sql = "CREATE TABLE IF NOT EXISTS produtos (" +
-                "idProduto INT PRIMARY KEY AUTO_INCREMENT," +
+                "idProduto BIGSERIAL PRIMARY KEY," +
                 "nomeProduto VARCHAR(50)," +
                 "quantProduto INT," +
                 "valorCusto DECIMAL(10, 2)," +
                 "valorVenda DECIMAL(10, 2)," +
                 "codigoDeBarras INT," +
-                "idCategoria INT NOT NULL," +
+                "idCategoria BIGINT NOT NULL," +
                     "CONSTRAINT fk_idCategoria FOREIGN KEY (idCategoria)" +
                     "REFERENCES categorias(idCategoria)" +
                     "ON DELETE CASCADE," +
-                "idFornecedor INT NOT NULL," +
+                "idFornecedor BIGINT NOT NULL," +
                     "CONSTRAINT fk_idFornecedor FOREIGN KEY (idFornecedor)" +
                     "REFERENCES fornecedores(idFornecedor)" +
                     "ON DELETE CASCADE " +

@@ -11,11 +11,11 @@ public class VendaProdutoDAO {
     public void criarTabelaVendasProdutos(){
 
         String sql = "CREATE TABLE IF NOT EXISTS vendasProdutos (" +
-                "idVendaProduto INT PRIMARY KEY AUTO_INCREMENT," +
-                "idVenda INT," +
+                "idVendaProduto BIGSERIAL PRIMARY KEY," +
+                "idVenda BIGINT," +
                 "CONSTRAINT idVenda FOREIGN KEY (idVenda)" +
                 "REFERENCES vendas(idVenda)" +
-                "idProduto INT," +
+                "idProduto BIGINT," +
                 "CONSTRAINT idProduto FOREIGN KEY (idProduto)" +
                 "REFERENCES produtos(idProduto)" +
                 ");";

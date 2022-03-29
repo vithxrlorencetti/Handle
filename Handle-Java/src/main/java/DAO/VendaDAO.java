@@ -15,7 +15,7 @@ public class VendaDAO {
     public void criarTabelaVendas() {
 
         String sql = "CREATE TABLE IF NOT EXISTS vendas (" +
-                "idVenda INT PRIMARY KEY AUTO_INCREMENT," +
+                "idVenda BIGSERIAL PRIMARY KEY," +
                 "dataVenda DATE," +
                 "idVendaProduto INT," +
                 "CONSTRAINT idVendaProduto FOREIGN KEY (idVendaProduto)" +
