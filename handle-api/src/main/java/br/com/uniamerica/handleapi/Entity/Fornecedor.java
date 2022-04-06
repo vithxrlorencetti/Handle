@@ -1,14 +1,30 @@
 package br.com.uniamerica.handleapi.Entity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@ToString
 @Table(name = "fornecedores", schema = "public")
 public class Fornecedor extends AbstractEntity {
 
+    @Getter @Setter
+    @Column(name = "nome", nullable = false, length = 40)
     private String nome;
+
+    @Getter @Setter
+    @Column(name = "telefone", nullable = false, length = 15)
     private String telefone;
+
+    @Getter @Setter
+    @ManyToOne
+    private Endereco endereco;
 
 }
