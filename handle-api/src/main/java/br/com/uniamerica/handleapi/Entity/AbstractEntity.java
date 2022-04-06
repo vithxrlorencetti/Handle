@@ -2,13 +2,11 @@ package br.com.uniamerica.handleapi.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-@MappedSuperclass
 @NoArgsConstructor
+@MappedSuperclass
 public abstract class AbstractEntity {
 
     @Getter @Setter
@@ -28,7 +26,5 @@ public abstract class AbstractEntity {
     @Getter @Setter
     @Column(name = "excluido")
     private LocalDateTime excluido;
-
-
 
 }
