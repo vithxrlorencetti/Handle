@@ -1,12 +1,8 @@
 package br.com.uniamerica.handleapi.service;
-
-import br.com.uniamerica.handleapi.Entity.Categoria;
 import br.com.uniamerica.handleapi.Entity.Cliente;
-import br.com.uniamerica.handleapi.Repository.CategoriaRepository;
 import br.com.uniamerica.handleapi.Repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
 import javax.transaction.Transactional;
 import java.awt.print.Pageable;
 import java.util.Optional;

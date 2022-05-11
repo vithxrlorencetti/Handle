@@ -1,11 +1,9 @@
 package br.com.uniamerica.handleapi.service;
-
 import br.com.uniamerica.handleapi.Entity.Categoria;
 import br.com.uniamerica.handleapi.Repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.awt.print.Pageable;
 import java.util.Optional;
@@ -15,7 +13,6 @@ public class CategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
-
 
     public Optional<Categoria> findById(Long id){
         return this.categoriaRepository.findById(id);
