@@ -1,5 +1,5 @@
-package br.com.uniamerica.handleapi.Repository;
-import br.com.uniamerica.handleapi.Entity.Funcionario;
+package br.com.uniamerica.handleapi.repository;
+import br.com.uniamerica.handleapi.entity.Funcionario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +13,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario,Long> {
     @Query("UPDATE Funcionario funcionario " +
             "SET funcionario.excluido = :excluido " +
             "WHERE funcionario.id = :funcionario")
-    public void updateStatus(@Param("excluido") LocalDateTime excluido, @Param("funcionario") Long idFuncionario);
+    public void updateStatus(@Param("funcionario") Long idFuncionario);
 
 }

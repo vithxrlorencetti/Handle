@@ -1,4 +1,4 @@
-package br.com.uniamerica.handleapi.Entity;
+package br.com.uniamerica.handleapi.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

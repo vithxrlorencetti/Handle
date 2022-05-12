@@ -1,11 +1,12 @@
 package br.com.uniamerica.handleapi.service;
-import br.com.uniamerica.handleapi.Entity.Categoria;
-import br.com.uniamerica.handleapi.Repository.CategoriaRepository;
+import br.com.uniamerica.handleapi.entity.Categoria;
+import br.com.uniamerica.handleapi.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-import java.awt.print.Pageable;
+
 import java.util.Optional;
 
 @Service
@@ -31,14 +32,16 @@ public class CategoriaService {
             throw new RuntimeException();
         }
     }
+
     @Transactional
     public void insert(Categoria categoria){
         this.categoriaRepository.save(categoria);
     }
+
     @Transactional
     public void updateStatus(Long id, Categoria categoria){
         if (id == categoria.getId()){
-            this.categoriaRepository.updateStatus(Categoria.getId());
+            this.categoriaRepository.updateStatus(categoria.getId());
         }else {
             throw new RuntimeException();
         }

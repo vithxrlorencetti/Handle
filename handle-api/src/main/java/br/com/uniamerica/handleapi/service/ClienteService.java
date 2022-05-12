@@ -1,17 +1,16 @@
 package br.com.uniamerica.handleapi.service;
-import br.com.uniamerica.handleapi.Entity.Cliente;
-import br.com.uniamerica.handleapi.Repository.ClienteRepository;
+import br.com.uniamerica.handleapi.entity.Cliente;
+import br.com.uniamerica.handleapi.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
 import javax.transaction.Transactional;
-import java.awt.print.Pageable;
 import java.util.Optional;
 
 public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
-
 
     public Optional<Cliente> findById(Long id){
         return this.clienteRepository.findById(id);
@@ -30,14 +29,16 @@ public class ClienteService {
             throw new RuntimeException();
         }
     }
+
     @Transactional
     public void insert(Cliente cliente){
         this.clienteRepository.save(cliente);
     }
+
     @Transactional
     public void updateStatus(Long id, Cliente cliente){
         if (id == cliente.getId()){
-            this.clienteRepository.updateStatus(Cliente.getId());
+            this.clienteRepository.updateStatus(cliente.getId());
         }else {
             throw new RuntimeException();
         }

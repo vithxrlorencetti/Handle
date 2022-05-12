@@ -1,4 +1,4 @@
-package br.com.uniamerica.handleapi.Entity;
+package br.com.uniamerica.handleapi.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,5 +26,10 @@ public abstract class AbstractEntity {
     @Getter @Setter
     @Column(name = "excluido")
     private LocalDateTime excluido;
+
+    @PrePersist
+    public void dataCadastro(){
+        this.setCadastro(LocalDateTime.now());
+    }
 
 }

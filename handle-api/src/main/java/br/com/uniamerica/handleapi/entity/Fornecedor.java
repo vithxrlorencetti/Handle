@@ -1,4 +1,4 @@
-package br.com.uniamerica.handleapi.Entity;
+package br.com.uniamerica.handleapi.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

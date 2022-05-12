@@ -1,5 +1,5 @@
-package br.com.uniamerica.handleapi.Repository;
-import br.com.uniamerica.handleapi.Entity.Categoria;
+package br.com.uniamerica.handleapi.repository;
+import br.com.uniamerica.handleapi.entity.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +12,6 @@ public interface CategoriaRepository extends JpaRepository<Categoria,Long> {
     @Query("UPDATE Categoria categoria " +
             "SET categoria.excluido = :excluido " +
             "WHERE categoria.id = :categoria")
-    public void updateStatus(@Param("excluido") LocalDateTime excluido, @Param("categoria") Long idCategoria);
+    public void updateStatus(@Param("categoria") Long idCategoria);
 
 }

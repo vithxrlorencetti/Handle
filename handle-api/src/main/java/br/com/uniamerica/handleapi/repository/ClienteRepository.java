@@ -1,5 +1,5 @@
-package br.com.uniamerica.handleapi.Repository;
-import br.com.uniamerica.handleapi.Entity.Cliente;
+package br.com.uniamerica.handleapi.repository;
+import br.com.uniamerica.handleapi.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +13,6 @@ public interface ClienteRepository extends JpaRepository<Cliente,Long> {
     @Query("UPDATE Cliente cliente " +
             "SET cliente.excluido = :excluido " +
             "WHERE cliente.id = :cliente")
-    public void updateStatus(@Param("excluido") LocalDateTime excluido, @Param("cliente") Long idCliente);
+    public void updateStatus(@Param("cliente") Long idCliente);
 
 }
