@@ -24,7 +24,7 @@ public class Fornecedor extends AbstractEntity {
     private String telefone;
 
     @Getter @Setter
-    @ManyToOne
-    private Endereco endereco;
+    @Column(name = "endereco", nullable = false, length = 100)
+    private String endereco;
 
 }

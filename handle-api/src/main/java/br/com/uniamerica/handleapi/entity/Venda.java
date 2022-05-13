@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -23,19 +22,19 @@ public class Venda  extends AbstractEntity{
     private LocalDateTime data;
 
     @Getter @Setter
-    @Column(name = "recebido", nullable = false, precision = 5, scale = 5)
+    @Column(name = "recebido", nullable = false, precision = 10, scale = 2)
     private BigDecimal recebido;
 
     @Getter @Setter
-    @Column(name = "total", nullable = false, precision = 5, scale = 5)
+    @Column(name = "total", nullable = false, precision = 10, scale = 2)
     private BigDecimal total;
 
     @Getter @Setter
-    @Column(name = "troco", precision = 5, scale = 5)
+    @Column(name = "troco", precision = 10, scale = 2)
     private BigDecimal troco;
 
     @Getter @Setter
-    @Column(name = "desconto", precision = 5, scale = 5)
+    @Column(name = "desconto", precision = 10, scale = 2)
     private BigDecimal desconto;
 
     @Getter @Setter

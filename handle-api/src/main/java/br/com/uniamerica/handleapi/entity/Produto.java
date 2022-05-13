@@ -26,15 +26,19 @@ public class Produto extends AbstractEntity {
     private Categoria categoria;
 
     @Getter @Setter
-    @Column(name = "codigo_de_barras", nullable = false, unique = true)
+    @ManyToOne
+    private Fornecedor fornecedor;
+
+    @Getter @Setter
+    @Column(name = "codigo_de_barras", nullable = false, unique = true, length = 13)
     private Long codigoDeBarras;
 
     @Getter @Setter
-    @Column(name = "valor_custo", nullable = false, precision = 5, scale = 3)
+    @Column(name = "valor_custo", nullable = false, precision = 10, scale = 2)
     private BigDecimal valorCusto;
 
     @Getter @Setter
-    @Column(name = "valor_venda", nullable = false, precision = 5, scale = 3)
+    @Column(name = "valor_venda", nullable = false, precision = 10, scale = 2)
     private BigDecimal valorVenda;
 
     @Getter @Setter

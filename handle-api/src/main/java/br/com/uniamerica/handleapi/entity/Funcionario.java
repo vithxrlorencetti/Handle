@@ -41,7 +41,7 @@ public class Funcionario extends AbstractEntity {
     private String telefone;
 
     @Getter @Setter
-    @Column(name = "salario", nullable = false, precision = 5, scale = 5)
+    @Column(name = "salario", nullable = false, precision = 10, scale = 2)
     private BigDecimal salario;
 
 }
