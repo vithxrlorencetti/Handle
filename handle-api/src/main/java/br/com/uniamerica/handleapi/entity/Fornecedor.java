@@ -3,6 +3,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,9 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @ToString
+@Audited
 @Table(name = "fornecedores", schema = "public")
+@AuditTable(value = "fornecedor_audit", schema = "fornecedor_audit")
 public class Fornecedor extends AbstractEntity {
 
     @Getter @Setter

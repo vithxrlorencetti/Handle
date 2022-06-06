@@ -3,6 +3,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +16,9 @@ import java.math.BigDecimal;
 @Entity
 @NoArgsConstructor
 @ToString
+@Audited
 @Table(name = "produtos", schema = "public")
+@AuditTable(value = "produto_audit", schema = "produto_audit")
 public class Produto extends AbstractEntity {
 
     @Getter @Setter

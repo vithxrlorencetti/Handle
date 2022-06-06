@@ -3,6 +3,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +15,9 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @ToString
+@Audited
 @Table(name = "funcionarios", schema = "public")
+@AuditTable(value = "funcionario_audit", schema = "funcionario_audit")
 public class Funcionario extends AbstractEntity {
 
     @Getter @Setter

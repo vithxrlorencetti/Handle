@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -14,7 +17,9 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @ToString
+@Audited
 @Table(name = "vendas", schema = "public")
+@AuditTable(value = "venda_audit", schema = "venda_audit")
 public class Venda  extends AbstractEntity{
 
     @Getter @Setter
