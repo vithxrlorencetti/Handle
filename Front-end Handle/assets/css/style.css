@@ -1,0 +1,106 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+.side-menu{
+    margin: 20px;
+    width: 200px;
+    height: 920px;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    background: rgba( 0, 0, 0, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    border-radius: 36px 0px 36px 36px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-top: 1px solid rgba(237, 176, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(105, 39, 131, 0.2) 0%, rgba(37, 41, 58, 0.045) 77.08%, rgba(70, 144, 213, 0) 100%);
+}
+
+.button img{
+    width: 65px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    border-radius: 36px 0px 36px 36px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-top: 1px solid rgba(237, 176, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(192, 143, 211, 0.2) 0%, rgba(110, 191, 244, 0.0447917) 77.08%, rgba(70, 144, 213, 0) 100%);
+}
+
+.button :hover{
+    background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(255, 153, 0, 0.5) 0%, rgba(255, 105, 18, 0.045) 77.08%, rgba(70, 144, 213, 0) 100%);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-menu{
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 1800px;
+    height: 160px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba( 0, 0, 0, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    border-radius: 0px 36px 36px 0px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-top: 1px solid rgba(237, 176, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(105, 39, 131, 0.2) 0%, rgba(37, 41, 58, 0.045) 77.08%, rgba(70, 144, 213, 0) 100%);
+}
+
+.user-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    height: 110px;
+    margin:50px;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    -webkit-backdrop-filter: blur( 8px );
+    border-radius: 33px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-top: 1px solid rgba(237, 176, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    background: radial-gradient(90.16% 143.01% at 15.32% 21.04%, rgba(192, 143, 211, 0.2) 0%, rgba(110, 191, 244, 0.0447917) 77.08%, rgba(70, 144, 213, 0) 100%);
+}
+
+.user-button img{
+    width: 60px;
+    margin: 25px;
+}
+
+.user-button h2{
+    position: relative;
+    margin-right: 70px;
+    margin-top: 45px;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.menu-title h1{
+    color: #ffffff;
+    margin-left: 60px;
+    font-size:40px;
+}
