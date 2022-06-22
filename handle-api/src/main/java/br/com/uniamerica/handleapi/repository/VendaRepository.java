@@ -11,8 +11,8 @@ public interface VendaRepository extends JpaRepository<Venda,Long> {
 
     @Modifying
     @Query("UPDATE Venda venda " +
-            "SET venda.excluido = :excluido " +
+            "SET venda.ativo = false " +
             "WHERE venda.id = :venda")
-    public void updateStatus(@Param("venda") Long idVenda);
+    public void desativar(@Param("venda") Long idVenda);
 
 }

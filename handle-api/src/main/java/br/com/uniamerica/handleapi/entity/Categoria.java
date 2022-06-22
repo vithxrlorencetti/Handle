@@ -14,7 +14,7 @@ import org.hibernate.envers.Audited;
 @ToString
 @Audited
 @Table(name = "categorias", schema = "public")
-@AuditTable(value = "categorias_audit", schema = "categorias_audit")
+@AuditTable(value = "categorias_audit", schema = "handle_audit")
 public class Categoria extends AbstractEntity{
 
     @Getter @Setter

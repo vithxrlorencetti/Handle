@@ -4,20 +4,26 @@ import br.com.uniamerica.handleapi.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-import java.util.Optional;
 
+@Service
 public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Optional<Produto> findById(Long id){
-        return this.produtoRepository.findById(id);
+    public Produto findById(Long id){
+        return this.produtoRepository.findById(id).orElse(new Produto());
     }
 
     public Page<Produto> listAll(Pageable pageable){
         return this.produtoRepository.findAll(pageable);
+    }
+
+    @Transactional
+    public void insert(Produto produto){
+        this.produtoRepository.save(produto);
     }
 
     @Transactional
@@ -31,14 +37,9 @@ public class ProdutoService {
     }
 
     @Transactional
-    public void insert(Produto produto){
-        this.produtoRepository.save(produto);
-    }
-
-    @Transactional
-    public void updateStatus(Long id, Produto produto){
+    public void desativar(Long id, Produto produto){
         if (id == produto.getId()){
-            this.produtoRepository.updateStatus(produto.getId());
+            this.produtoRepository.desativar(produto.getId());
         }else {
             throw new RuntimeException();
         }

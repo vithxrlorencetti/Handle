@@ -7,20 +7,23 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
-import java.util.Optional;
-
 @Service
 public class CategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
 
-    public Optional<Categoria> findById(Long id){
-        return this.categoriaRepository.findById(id);
+    public Categoria findById(Long id){
+        return this.categoriaRepository.findById(id).orElse(new Categoria());
     }
 
     public Page<Categoria> listAll(Pageable pageable){
         return this.categoriaRepository.findAll(pageable);
+    }
+
+    @Transactional
+    public void insert(Categoria categoria){
+        this.categoriaRepository.save(categoria);
     }
 
     @Transactional
@@ -34,14 +37,9 @@ public class CategoriaService {
     }
 
     @Transactional
-    public void insert(Categoria categoria){
-        this.categoriaRepository.save(categoria);
-    }
-
-    @Transactional
-    public void updateStatus(Long id, Categoria categoria){
+    public void desativar(Long id, Categoria categoria){
         if (id == categoria.getId()){
-            this.categoriaRepository.updateStatus(categoria.getId());
+            this.categoriaRepository.desativar(categoria.getId());
         }else {
             throw new RuntimeException();
         }

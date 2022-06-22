@@ -11,9 +11,9 @@ public interface ProdutoRepository extends JpaRepository<Produto,Long> {
 
     @Modifying
     @Query("UPDATE Produto produto " +
-            "SET produto.excluido = :excluido " +
+            "SET produto.ativo = false " +
             "WHERE produto.id = :produto")
-    public void updateStatus(@Param("produto") Long idProduto);
+    public void desativar(@Param("produto") Long idProduto);
 
 
 

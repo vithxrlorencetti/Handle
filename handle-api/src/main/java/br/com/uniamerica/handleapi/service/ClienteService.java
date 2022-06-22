@@ -4,20 +4,26 @@ import br.com.uniamerica.handleapi.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
-import java.util.Optional;
 
+@Service
 public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
 
-    public Optional<Cliente> findById(Long id){
-        return this.clienteRepository.findById(id);
+    public Cliente findById(Long id){
+        return this.clienteRepository.findById(id).orElse(new Cliente());
     }
 
     public Page<Cliente> listAll(Pageable pageable){
         return this.clienteRepository.findAll(pageable);
+    }
+
+    @Transactional
+    public void insert(Cliente cliente){
+        this.clienteRepository.save(cliente);
     }
 
     @Transactional
@@ -31,14 +37,9 @@ public class ClienteService {
     }
 
     @Transactional
-    public void insert(Cliente cliente){
-        this.clienteRepository.save(cliente);
-    }
-
-    @Transactional
-    public void updateStatus(Long id, Cliente cliente){
+    public void desativar(Long id, Cliente cliente){
         if (id == cliente.getId()){
-            this.clienteRepository.updateStatus(cliente.getId());
+            this.clienteRepository.desativar(cliente.getId());
         }else {
             throw new RuntimeException();
         }

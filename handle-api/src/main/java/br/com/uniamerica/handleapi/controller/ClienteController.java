@@ -1,36 +1,56 @@
 package br.com.uniamerica.handleapi.controller;
 
-
 import br.com.uniamerica.handleapi.entity.Cliente;
-import br.com.uniamerica.handleapi.entity.Fornecedor;
-import br.com.uniamerica.handleapi.repository.ClienteRepository;
-import br.com.uniamerica.handleapi.repository.FornecedorRespository;
+import br.com.uniamerica.handleapi.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api/clientes")
 public class ClienteController {
-
     @Autowired
-    public ClienteRepository clienteRepository;
+    ClienteService clienteService;
+    @GetMapping("/{idCliente}")
+    public ResponseEntity<Cliente> findById(@PathVariable("idCliente") Long idCliente) {
+        return ResponseEntity.ok().body(this.clienteService.findById(idCliente));
+    }
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> listAllCliente(){
-        return new ResponseEntity<>(clienteRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<Page<Cliente>> listByAllPage(Pageable pageable) {
+        return ResponseEntity.ok().body(this.clienteService.listAll(pageable));
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody List<Cliente> cliente){
-        clienteRepository.saveAll(cliente);
-        return new ResponseEntity<>("Cliente Cadastrado", HttpStatus.OK);
+    public ResponseEntity<?> insert(@RequestBody Cliente cliente) {
+        try {
+            this.clienteService.insert(cliente);
+            return ResponseEntity.ok().body("Cliente cadastrado com sucesso.");
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/{idCliente}")
+    public ResponseEntity<?> update(@PathVariable Long idCliente, @RequestBody Cliente cliente) {
+        try {
+            this.clienteService.update(idCliente, cliente);
+            return ResponseEntity.ok().body("Cliente atualizado com sucesso.");
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/desativar/{idCliente}")
+    public ResponseEntity<?> desativar(@PathVariable Long idCliente, @RequestBody Cliente cliente) {
+        try {
+            this.clienteService.desativar(idCliente, cliente);
+            return ResponseEntity.ok().body("Cliente desativado com sucesso.");
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

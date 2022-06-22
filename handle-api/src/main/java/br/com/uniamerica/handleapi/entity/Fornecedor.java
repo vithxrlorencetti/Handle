@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @ToString
 @Audited
 @Table(name = "fornecedores", schema = "public")
-@AuditTable(value = "fornecedor_audit", schema = "fornecedor_audit")
+@AuditTable(value = "fornecedor_audit", schema = "handle_audit")
 public class Fornecedor extends AbstractEntity {
 
     @Getter @Setter

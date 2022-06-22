@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @ToString
 @Audited
 @Table(name = "produtos", schema = "public")
-@AuditTable(value = "produto_audit", schema = "produto_audit")
+@AuditTable(value = "produto_audit", schema = "handle_audit")
 public class Produto extends AbstractEntity {
 
     @Getter @Setter

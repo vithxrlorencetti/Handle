@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @ToString
 @Audited
 @Table(name = "funcionarios", schema = "public")
-@AuditTable(value = "funcionario_audit", schema = "funcionario_audit")
+@AuditTable(value = "funcionario_audit", schema = "handle_audit")
 public class Funcionario extends AbstractEntity {
 
     @Getter @Setter

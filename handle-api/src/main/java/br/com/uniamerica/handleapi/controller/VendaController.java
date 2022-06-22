@@ -1,37 +1,57 @@
 package br.com.uniamerica.handleapi.controller;
 
-import br.com.uniamerica.handleapi.entity.Funcionario;
 import br.com.uniamerica.handleapi.entity.Venda;
-import br.com.uniamerica.handleapi.repository.CategoriaRepository;
-import br.com.uniamerica.handleapi.repository.FuncionarioRepository;
-import br.com.uniamerica.handleapi.repository.VendaRepository;
+import br.com.uniamerica.handleapi.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/api/vendas")
 public class VendaController {
 
     @Autowired
-    public VendaRepository vendaRepository;
+    VendaService vendaService;
+    @GetMapping("/{idVenda}")
+    public ResponseEntity<Venda> findById(@PathVariable("idVenda") Long idVenda) {
+        return ResponseEntity.ok().body(this.vendaService.findById(idVenda));
+    }
 
     @GetMapping
-    public ResponseEntity<List<Venda>> listAllVenda(){
-        return new ResponseEntity<>(vendaRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<Page<Venda>> listByAllPage(Pageable pageable) {
+        return ResponseEntity.ok().body(this.vendaService.listAll(pageable));
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody List<Venda> venda){
-        vendaRepository.saveAll(venda);
-        return new ResponseEntity<>("Venda Cadastrado com sucesso", HttpStatus.OK);
+    public ResponseEntity<?> insert(@RequestBody Venda venda) {
+        try {
+            this.vendaService.insert(venda);
+            return ResponseEntity.ok().body("Venda cadastrada com sucesso.");
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
+    @PutMapping("/{idVenda}")
+    public ResponseEntity<?> update(@PathVariable Long idVenda, @RequestBody Venda venda) {
+        try {
+            this.vendaService.update(idVenda, venda);
+            return ResponseEntity.ok().body("Venda atualizada com sucesso.");
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/desativar/{idVenda}")
+    public ResponseEntity<?> desativar(@PathVariable Long idVenda, @RequestBody Venda venda) {
+        try {
+            this.vendaService.desativar(idVenda, venda);
+            return ResponseEntity.ok().body("Venda desativada com sucesso.");
+        }catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }

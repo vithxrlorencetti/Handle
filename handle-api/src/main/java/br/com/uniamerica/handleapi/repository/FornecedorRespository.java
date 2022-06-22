@@ -11,8 +11,8 @@ public interface FornecedorRespository extends JpaRepository<Fornecedor,Long> {
 
     @Modifying
     @Query("UPDATE Fornecedor fornecedor " +
-            "SET fornecedor.excluido = :excluido " +
+            "SET fornecedor.ativo = false " +
             "WHERE fornecedor.id = :fornecedor")
-    public void updateStatus(@Param("fornecedor") Long idFornecedor);
+    public void desativar(@Param("fornecedor") Long idFornecedor);
 
 }

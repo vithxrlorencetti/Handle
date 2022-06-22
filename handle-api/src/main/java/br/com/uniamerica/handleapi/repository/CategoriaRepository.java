@@ -11,8 +11,8 @@ public interface CategoriaRepository extends JpaRepository<Categoria,Long> {
 
     @Modifying
     @Query("UPDATE Categoria categoria " +
-            "SET categoria.excluido = :excluido " +
+            "SET categoria.ativo = false " +
             "WHERE categoria.id = :categoria")
-    public void updateStatus(@Param("categoria") Long idCategoria);
+    public void desativar(@Param("categoria") Long idCategoria);
 
 }
